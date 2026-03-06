@@ -1,0 +1,331 @@
+/* --- GLOBAL VARIABLES & RESET --- */
+:root {
+    --primary-blue: #0056b3;
+    --dark-blue: #003d80;
+    --light-blue: #eef4fb;
+    --white: #ffffff;
+    --text-dark: #333333;
+    --text-light: #666666;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lexend Deca', sans-serif;
+    background-color: var(--light-blue);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* --- HIGHLIGHT COLOR CHANGE --- */
+.highlight {
+    color: #FFD700; /* Changed to Yellow/Gold */
+    font-weight: 700;
+}
+
+/* --- NAVIGATION --- */
+nav {
+    background-color: var(--white);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.title a {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    letter-spacing: 1px;
+}
+
+.links_1 {
+    display: flex;
+    gap: 2rem;
+}
+
+.links_1 a {
+    font-weight: 500;
+    color: var(--text-dark);
+    position: relative;
+}
+
+.links_1 a:hover {
+    color: var(--primary-blue);
+}
+
+/* --- INTRO SECTION --- */
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 10%;
+    background: var(--white);
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.content_1 {
+    flex: 1;
+    min-width: 300px;
+}
+
+.content_1 h3 {
+    font-size: 2rem;
+    color: var(--dark-blue);
+    margin-bottom: 1rem;
+}
+
+.content_1 p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.img1 {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 300px;
+}
+
+.img1 img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* --- PHILOSOPHY SECTION --- */
+.philosophy {
+    padding: 4rem 10%;
+    text-align: center;
+    background-color: var(--light-blue);
+}
+
+.philosophy h1 {
+    color: var(--dark-blue);
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.philosophy p {
+    max-width: 800px;
+    margin: 0 auto 3rem auto;
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+
+.card_1 {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.vision, .mission {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+    border-top: 5px solid var(--primary-blue);
+}
+
+.vision h3, .mission h3 {
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* --- CORE VALUES SECTION --- */
+.academic_programs {
+    padding: 4rem 10%;
+    background: var(--white);
+}
+
+.card7 {
+    text-align: center;
+    color: var(--dark-blue);
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.flexbox7 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.programs {
+    background: var(--light-blue);
+    padding: 2rem;
+    border-radius: var(--radius);
+    transition: transform 0.3s ease;
+}
+
+.programs:hover {
+    transform: translateY(-5px);
+    background: #e0efff;
+}
+
+.programs h3 {
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.programs p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* --- FOOTER --- */
+.footer_1 {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 4rem 10% 2rem 10%;
+}
+
+.header4 h3 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.flexbox10 {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.text11 {
+    flex: 1;
+    min-width: 300px;
+}
+
+.text11 h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #8ecae6;
+}
+
+.text11 p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.footer_links h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #8ecae6;
+}
+
+.links_footer li {
+    margin-bottom: 1rem;
+}
+
+.links_footer a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+}
+
+.links_footer a:hover {
+    color: #8ecae6;
+    padding-left: 5px;
+}
+
+.made_by {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.made_by h3 {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.fb {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.links_8 a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.links_8 a:hover {
+    opacity: 1;
+    color: #8ecae6;
+}
+
+/* --- RESPONSIVE DESIGN (MOBILE) --- */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .links_1 {
+        gap: 1rem;
+        font-size: 0.9rem;
+    }
+
+    .intro {
+        padding: 3rem 5%;
+        text-align: center;
+    }
+
+    .content_1 h3 {
+        font-size: 1.8rem;
+    }
+
+    .philosophy h1 {
+        font-size: 2rem;
+    }
+
+    .card_1 {
+        flex-direction: column;
+    }
+
+    .flexbox10 {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

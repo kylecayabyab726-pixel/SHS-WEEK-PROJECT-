@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="game-style.css">
+    <title>LCBA | HUMSS Game</title>
+</head>
+<body>
+
+    <nav class="links">
+        <div class="title">
+            <a href="index.html">LCBA</a>
+        </div>
+        <ul class="links_1">
+            <li><a href="humss.html">HUMSS</a></li>
+            <li><a href="imagegallery.html">Image Gallery</a></li>
+            <li><a href="videogallery.html">Video Gallery</a></li>
+            <li><a href="game.html" class="active">Game</a></li>
+        </ul>
+    </nav>
+
+    <header class="game-header">
+        <h1>HUMSS Quiz Challenge</h1>
+        <p>Test your knowledge about the HUMSS Strand!</p>
+    </header>
+
+    <section class="game-container">
+        <div class="game-info">
+            <div class="score-box">
+                <span>Score:</span>
+                <span id="score">0</span>
+            </div>
+            <div class="question-box">
+                <h2 id="question">Loading...</h2>
+            </div>
+            <div class="options-box" id="options">
+                <!-- Options will be generated here -->
+            </div>
+            <div class="feedback" id="feedback"></div>
+        </div>
+        <button class="restart-btn" onclick="restartGame()">Restart Game</button>
+    </section>
+
+    <footer class="footer_1">
+        <div class="header4">
+            <h3>Laguna College of Business and Arts</h3>
+        </div>
+
+        <div class="flexbox10">
+            <div class="text11">
+                <h1>Why choose LCBA</h1>
+                <p>
+                    Laguna College of Business and Arts (LCBA) is a school that provides <span class="highlight">quality education</span>
+                    while helping students develop their knowledge, skills, and character.
+                    It offers supportive learning environments, dedicated teachers, and programs that
+                    prepare students for future careers. Through its commitment to excellence and
+                    student growth, LCBA helps learners build a strong foundation for success.
+                </p>
+            </div>
+
+            <div class="footer_links">
+                <h2>Information</h2>
+                <ul class="links_footer">
+                    <li class="links_7">
+                        <a href="https://www.facebook.com/LCBAofficial/">
+                            <i class="fa-brands fa-facebook"></i> Facebook
+                        </a>
+                    </li>
+                    <li class="links_7">
+                        <a href="https://www.lcba.edu.ph/">
+                            <i class="fa-solid fa-house"></i> Website
+                        </a>
+                    </li>
+                    <li class="links_7">
+                        <a href="tel: +639610745530">
+                            <i class="fa-solid fa-phone"></i> SMART: 0961-074-5530
+                        </a>
+                    </li>
+                    <li class="links_7">
+                        <a href="">
+                            <i class="fa-solid fa-location-arrow"></i> P.Burgos St., Calamba City, Laguna, 4027
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="made_by">
+            <h3>Created By</h3>
+            <ul class="fb">
+                <li class="links_8">
+                    <a href="https://www.facebook.com/lawrencekyle.cayabyab">
+                        <i class="fa-solid fa-circle-user"></i> Lawrence Kyle Cayabyab
+                    </a>
+                </li>
+                <li class="links_8">
+                    <a href="https://www.facebook.com/g.kylecorpuz">
+                        <i class="fa-solid fa-circle-user"></i> Gian Kyle Bongat
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        const questions = [
+            {
+                question: "What does HUMSS stand for?",
+                options: ["Humanities and Social Sciences", "History and Math Studies", "Health and Medical School", "Home and Art Studies"],
+                answer: 0
+            },
+            {
+                question: "Which subject is part of HUMSS?",
+                options: ["Calculus", "Creative Writing", "Physics", "Chemistry"],
+                answer: 1
+            },
+            {
+                question: "What is a good career for HUMSS students?",
+                options: ["Teacher", "Engineer", "Doctor", "Pilot"],
+                answer: 0
+            },
+            {
+                question: "Which value means doing the right thing?",
+                options: ["Honesty", "Integrity", "Speed", "Strength"],
+                answer: 1
+            },
+            {
+                question: "What is LCBA's full name?",
+                options: ["Laguna College of Business and Arts", "Laguna City of Business and Arts", "Laguna College of Basic Arts", "Laguna City of Basic Arts"],
+                answer: 0
+            },
+            {
+                question: "Bonus! What color is LCBA's main theme?",
+                options: ["Blue", "Purple", "Green", "Red"],
+                answer: 1
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let isBonus = false;
+
+        function loadQuestion() {
+            const questionBox = document.getElementById("question");
+            const optionsBox = document.getElementById("options");
+            
+            if (currentQuestion >= questions.length) {
+                questionBox.textContent = "🎉 Game Complete! 🎉";
+                optionsBox.innerHTML = `<p>Your final score: ${score} / ${questions.length}</p>`;
+                return;
+            }
+
+            const q = questions[currentQuestion];
+            if (currentQuestion === 5) {
+                questionBox.textContent = "🌟 BONUS QUESTION! 🌟";
+                isBonus = true;
+            } else {
+                questionBox.textContent = q.question;
+                isBonus = false;
+            }
+            
+            optionsBox.innerHTML = "";
+
+            q.options.forEach((option, index) => {
+                const btn = document.createElement("button");
+                btn.textContent = option;
+                btn.classList.add("option-btn");
+                btn.onclick = () => checkAnswer(index);
+                optionsBox.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(selected) {
+            const correct = questions[currentQuestion].answer;
+            const feedback = document.getElementById("feedback");
+            
+            if (selected === correct) {
+                if (isBonus) {
+                    score += 2;
+                    feedback.textContent = "Bonus Correct! +2 Points! 🌟";
+                } else {
+                    score++;
+                    feedback.textContent = "Correct! 🎉";
+                }
+                feedback.style.color = "#4CAF50";
+            } else {
+                feedback.textContent = "Wrong! 😔";
+                feedback.style.color = "#f44336";
+            }
+
+            document.getElementById("score").textContent = score;
+
+            setTimeout(() => {
+                feedback.textContent = "";
+                currentQuestion++;
+                loadQuestion();
+            }, 1500);
+        }
+
+        function restartGame() {
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById("score").textContent = "0";
+            loadQuestion();
+        }
+
+        loadQuestion();
+    </script>
+    
+</body>
+</html>

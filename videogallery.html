@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="video-gallery.css">
+    <title>LCBA | Video Gallery</title>
+</head>
+<body>
+
+    <nav class="links">
+        <div class="title">
+            <a href="index.html">LCBA</a>
+        </div>
+        <ul class="links_1">
+            <li><a href="humss.html">HUMSS</a></li>
+            <li><a href="imagegallery.html">Image Gallery</a></li>
+            <li><a href="video-gallery.html" class="active">Video Gallery</a></li>
+            <li><a href="game.html">Game</a></li>
+        </ul>
+    </nav>
+
+    <header class="video-header">
+        <h1>Video Gallery</h1>
+        <p>Watch moments from our campus life and activities</p>
+    </header>
+
+    <section class="video-container">
+        <div class="video-wrapper">
+            <div class="video-slideshow">
+                <div class="video-slide active">
+                    <div class="video-placeholder">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Video 1</span>
+                    </div>
+                    <div class="video-caption">HUMSS</div>
+                </div>
+
+                <div class="video-slide">
+                    <div class="video-placeholder">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Video 2</span>
+                    </div>
+                    <div class="video-caption">HUMSS</div>
+                </div>
+
+                <div class="video-slide">
+                    <div class="video-placeholder">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Video 3</span>
+                    </div>
+                    <div class="video-caption">HUMSS</div>
+                </div>
+
+                <div class="video-slide">
+                    <div class="video-placeholder">
+                        <i class="fa-solid fa-play"></i>
+                        <span>Video 4</span>
+                    </div>
+                    <div class="video-caption">HUMSS</div>
+                </div>
+            </div>
+
+            <a class="video-prev" onclick="changeVideo(-1)">&#10094;</a>
+            <a class="video-next" onclick="changeVideo(1)">&#10095;</a>
+        </div>
+
+        <div class="video-dots">
+            <span class="dot active" onclick="currentVideo(1)"></span>
+            <span class="dot" onclick="currentVideo(2)"></span>
+            <span class="dot" onclick="currentVideo(3)"></span>
+            <span class="dot" onclick="currentVideo(4)"></span>
+        </div>
+    </section>
+
+    <footer class="footer_1">
+        <div class="header4">
+            <h3>Laguna College of Business and Arts</h3>
+        </div>
+
+        <div class="flexbox10">
+            <div class="text11">
+                <h1>Why choose LCBA</h1>
+                <p>
+                    Laguna College of Business and Arts (LCBA) is a school that provides <span class="highlight">quality education</span>
+                    while helping students develop their knowledge, skills, and character.
+                    It offers supportive learning environments, dedicated teachers, and programs that
+                    prepare students for future careers. Through its commitment to excellence and
+                    student growth, LCBA helps learners build a strong foundation for success.
+                </p>
+            </div>
+
+            <div class="footer_links">
+                <h2>Information</h2>
+                <ul class="links_footer">
+                    <li class="links_7">
+                        <a href="https://www.facebook.com/LCBAofficial/">
+                            <i class="fa-brands fa-facebook"></i> Facebook
+                        </a>
+                    </li>
+                    <li class="links_7">
+                        <a href="https://www.lcba.edu.ph/">
+                            <i class="fa-solid fa-house"></i> Website
+                        </a>
+                    </li>
+                    <li class="links_7">
+                        <a href="tel: +639610745530">
+                            <i class="fa-solid fa-phone"></i> SMART: 0961-074-5530
+                        </a>
+                    </li>
+                    <li class="links_7">
+                        <a href="">
+                            <i class="fa-solid fa-location-arrow"></i> P.Burgos St., Calamba City, Laguna, 4027
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="made_by">
+            <h3>Created By</h3>
+            <ul class="fb">
+                <li class="links_8">
+                    <a href="https://www.facebook.com/lawrencekyle.cayabyab">
+                        <i class="fa-solid fa-circle-user"></i> Lawrence Kyle Cayabyab
+                    </a>
+                </li>
+                <li class="links_8">
+                    <a href="https://www.facebook.com/g.kylecorpuz">
+                        <i class="fa-solid fa-circle-user"></i> Gian Kyle Bongat
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        let videoIndex = 1;
+        showVideos(videoIndex);
+
+        function changeVideo(n) {
+            showVideos(videoIndex += n);
+        }
+
+        function currentVideo(n) {
+            showVideos(videoIndex = n);
+        }
+
+        function showVideos(n) {
+            let i;
+            let slides = document.getElementsByClassName("video-slide");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {videoIndex = 1}
+            if (n < 1) {videoIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[videoIndex-1].style.display = "block";
+            dots[videoIndex-1].className += " active";
+        }
+
+        setInterval(function() {
+            changeVideo(1);
+        }, 5000);
+    </script>
+    
+</body>
+</html>
